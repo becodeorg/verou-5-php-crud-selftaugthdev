@@ -12,10 +12,16 @@
 <h1>Goodcard - track your collection of Pokémon cards</h1>
 
 <ul>
-    <?php foreach ($cards as $card) : ?>
-        <li><?= $card['name'] ?></li>
-    <?php endforeach; ?>
+    <?php if (is_array($cards)): ?>
+        <?php foreach ($cards as $card): ?>
+            <li><?= htmlspecialchars($card['Name'], ENT_QUOTES, 'UTF-8') ?> - <?= htmlspecialchars($card['Type'], ENT_QUOTES, 'UTF-8') ?> - <?= htmlspecialchars($card['Ability'], ENT_QUOTES, 'UTF-8') ?></li>
+        <?php endforeach; ?>
+    <?php else: ?>
+        <li>No cards found.</li>
+    <?php endif; ?>
 </ul>
 
 </body>
 </html>
+
+

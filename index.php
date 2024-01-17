@@ -29,22 +29,21 @@ $BASE_PATH = "localhost/BeCode/workbench/PHP-CRUD/";
 
 // Load the relevant action
 // This system will help you to only execute the code you want, instead of all of it (or complex if statements)
+$cards = $cardRepository->get();
+
 switch ($page) {
     case $BASE_PATH:
-        overview($databaseManager);
+        overview($cards);
         break;
     case $BASE_PATH . 'create':
         create($databaseManager);
         break;
-    case $BASE_PATH . 'edit':
-        echo "Editing ...";
-        break;
     default:
-        overview();
+        overview($cards);
         break;
 }
 
-function overview()
+function overview($cards)
 {
     // Load your view
     // Tip: you can load this dynamically and based on a variable, if you want to load another view
